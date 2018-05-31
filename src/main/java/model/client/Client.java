@@ -41,4 +41,13 @@ public class Client {
     public void setAccount(Account account) {
         this.account = account;
     }
+
+    @Override
+    public String toString() {
+        return "Client[" +
+                "name: '" + name + '\'' +
+                ", socialSecurity: " + socialSecurity +
+                ", account: " + account +
+                ']';
+    }
 }

@@ -1,5 +1,7 @@
 package model.account;
 
+import utils.create_id.create_account_id.CreateAccountID;
+
 public abstract class Account {
     protected int accountID;
     protected double balance;
@@ -11,7 +13,13 @@ public abstract class Account {
         this.type = type;
     }
 
+    public Account(int type) {
+        this.type = type;
+    }
+
     public abstract void loadRate();
+    public abstract void setIdentify(int identify);
+    public abstract void setKey(int key);
 
     public void incrementBalance(double quantity) {
         this.balance += quantity;

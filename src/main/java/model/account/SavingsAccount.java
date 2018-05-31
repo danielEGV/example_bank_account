@@ -9,8 +9,22 @@ public class SavingsAccount extends Account {
         super(balance, 1);
     }
 
+    public SavingsAccount() {
+        super(1);
+    }
+
     public void loadRate() {
 
+    }
+
+    @Override
+    public void setIdentify(int identify) {
+        this.safetyDepositBoxID = identify;
+    }
+
+    @Override
+    public void setKey(int key) {
+        this.safetyDepositBoxKey = key;
     }
 
     public int getSafetyDepositBoxID() {
@@ -27,5 +41,13 @@ public class SavingsAccount extends Account {
 
     public void setSafetyDepositBoxKey(int safetyDepositBoxKey) {
         this.safetyDepositBoxKey = safetyDepositBoxKey;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "SavingsAccount[" +
+                "safetyDepositBoxID: " + safetyDepositBoxID +
+                ", safetyDepositBoxKey: " + safetyDepositBoxKey +
+                ']';
     }
 }

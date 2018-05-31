@@ -9,8 +9,22 @@ public class CheckingAccount extends Account {
         super(balance, 2);
     }
 
+    public CheckingAccount() {
+        super(2);
+    }
+
     public void loadRate() {
 
+    }
+
+    @Override
+    public void setIdentify(int identify) {
+        this.debitCardNumber = identify;
+    }
+
+    @Override
+    public void setKey(int key) {
+        this.debitCardPin = key;
     }
 
     public int getDebitCardNumber() {
@@ -27,5 +41,13 @@ public class CheckingAccount extends Account {
 
     public void setDebitCardPin(int debitCardPin) {
         this.debitCardPin = debitCardPin;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nCheckingAccount[" +
+                "debitCardNumber: " + debitCardNumber +
+                ", debitCardPin: " + debitCardPin +
+                ']';
     }
 }

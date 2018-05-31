@@ -1,4 +1,6 @@
 package utils.create_id.create_checking_id;
 
-public class ICreateChecking {
+public interface ICreateChecking {
+    int createCreditCardNumber();
+    int createCreditCardPin();
 }
