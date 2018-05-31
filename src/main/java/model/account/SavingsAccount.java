@@ -1,5 +1,7 @@
 package model.account;
 
+import model.rate.BaseRate;
+
 public class SavingsAccount extends Account {
 
     private int safetyDepositBoxID;
@@ -14,7 +16,7 @@ public class SavingsAccount extends Account {
     }
 
     public void loadRate() {
-
+        this.rate = new BaseRate().baseRate() - 0.25;
     }
 
     @Override

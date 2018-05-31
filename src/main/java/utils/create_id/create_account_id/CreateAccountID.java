@@ -22,6 +22,6 @@ public class CreateAccountID implements ICreateAccountID {
 
     @Override
     public String randomID() {
-        return getString.apply(propetiesSizeAccountID.readSizeAccountID());
+        return getString.apply(IRandomID.randomID.apply(propetiesSizeAccountID.readSizeAccountID()));
     }
 }

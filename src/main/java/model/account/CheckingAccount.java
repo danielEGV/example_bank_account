@@ -1,5 +1,7 @@
 package model.account;
 
+import model.rate.BaseRate;
+
 public class CheckingAccount extends Account {
 
     private int debitCardNumber;
@@ -14,7 +16,7 @@ public class CheckingAccount extends Account {
     }
 
     public void loadRate() {
-
+        this.rate = new BaseRate().baseRate() * 0.15;
     }
 
     @Override

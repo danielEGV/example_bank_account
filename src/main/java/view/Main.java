@@ -19,16 +19,36 @@ public class Main {
         Account account1 = bank.createSavingsAccount(20000000);
 
         bank.associateAccountWithClient(client1, account1);
-
-        System.out.println(bank.showInfo(client1));
+        //System.out.println(bank.showInfo(client1));
 
         bank.setAccountID(client1);
-
-        System.out.println(bank.showInfo(client1));
+        //System.out.println(bank.showInfo(client1));
 
         bank.setSafetyDepositBox(client1);
-
         System.out.println(bank.showInfo(client1));
 
+        System.out.println("-------");
+
+        Client client2 = bank.registerClient("Camila Hernandez Ortiz", 12442);
+        Account account2 = bank.createCheckingAccount(5000000);
+
+        bank.associateAccountWithClient(client2, account2);
+        //System.out.println(bank.showInfo(client2));
+
+        bank.setAccountID(client2);
+        //System.out.println(bank.showInfo(client2));
+
+        bank.setCreditCard(client2);
+        System.out.println(bank.showInfo(client2));
+
+        bank.deposit(client1, 3000000);
+        System.out.println(bank.showInfo(client1));
+
+        bank.withdraw(client1, 10000000);
+        System.out.println(bank.showInfo(client1));
+
+        bank.transfer(client1, client2, 3000000);
+        System.out.println(bank.showInfo(client1));
+        System.out.println(bank.showInfo(client2));
     }
 }

@@ -11,6 +11,7 @@ public abstract class Account {
     public Account(double balance, int type) {
         this.balance = balance;
         this.type = type;
+        loadRate();
     }
 
     public Account(int type) {
@@ -20,6 +21,10 @@ public abstract class Account {
     public abstract void loadRate();
     public abstract void setIdentify(int identify);
     public abstract void setKey(int key);
+
+    public double compoundRate() {
+        return balance * rate;
+    }
 
     public void incrementBalance(double quantity) {
         this.balance += quantity;
