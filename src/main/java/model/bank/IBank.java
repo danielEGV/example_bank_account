@@ -6,6 +6,7 @@ import model.account.SavingsAccount;
 import model.client.Client;
 
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public interface IBank {

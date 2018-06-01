@@ -132,9 +132,9 @@ public class Bank implements IBank {
     }
 
     public Account createAccount(String accountType, int initialDeposit) {
-        if (accountType.equals(IBankFunctions.SAVINGS)) {
+        if (IBankFunctions.isSavings.apply(accountType)) {
             return createSavingsAccount(initialDeposit);
-        } else if (accountType.equals(IBankFunctions.CHECKING)) {
+        } else if (IBankFunctions.isChecking.apply(accountType)) {
             return createCheckingAccount(initialDeposit);
         }
         return null;

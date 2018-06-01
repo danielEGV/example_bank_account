@@ -4,6 +4,9 @@ import model.account.Account;
 import model.bank.Bank;
 import model.bank.IBank;
 import model.client.Client;
+import utils.bank_functions.AccountType;
+import utils.bank_functions.IAccountType;
+import utils.bank_functions.IBankFunctions;
 import utils.create_id.create_account_id.ICreateAccountID;
 import utils.create_id.random_id.IRandomID;
 import utils.properties.properties_size_ids.properties_size_account_id.IPropetiesSizeAccountID;
@@ -12,8 +15,11 @@ import utils.read_file.ReadFileBufferedReader;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Main {
+    public  static List<Client> clients;
+
     public static void main(String[] args) {
         //System.out.println(IRandomID.randomID.apply(12));
         //System.out.println(ICreateAccountID.lastTwoDigit.apply("Daniel"));
@@ -70,10 +76,17 @@ public class Main {
             System.out.println("File error.");
         }*/
 
-        List<Client> clients = bank.loadClients();
+        clients = bank.loadClients();
         for (Client client : clients) {
             System.out.println("***************************");
             System.out.println(bank.showInfo(client));
         }
+
+        System.out.println("----------------------------------------------------------------------------");
+        Client client = IBankFunctions.searchClient.apply(clients, 687057316);
+        System.out.println(bank.showInfo(client));
+
+        System.out.println("----------------------------------------------------------------------------");
+        new AccountType().separateByTypeOfAccount();
     }
 }
