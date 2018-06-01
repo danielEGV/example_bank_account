@@ -47,7 +47,7 @@ public class SavingsAccount extends Account {
 
     @Override
     public String toString() {
-        return super.toString() + "SavingsAccount[" +
+        return super.toString() + "\nSavingsAccount[" +
                 "safetyDepositBoxID: " + safetyDepositBoxID +
                 ", safetyDepositBoxKey: " + safetyDepositBoxKey +
                 ']';

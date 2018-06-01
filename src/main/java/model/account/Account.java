@@ -68,7 +68,7 @@ public abstract class Account {
 
     @Override
     public String toString() {
-        return "Account[" +
+        return "\nAccount[" +
                 "accountID: " + accountID +
                 ", balance: " + balance +
                 ", rate: " + rate +
