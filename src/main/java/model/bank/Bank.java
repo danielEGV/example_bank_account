@@ -29,9 +29,17 @@ import java.util.List;
 public class Bank implements IBank {
 
     private int index;
+    private static Bank bank;
 
-    public Bank() {
+    private Bank() {
         index = 10000;
+    }
+
+    public static Bank getInstance() {
+        if (bank == null) {
+            bank = new Bank();
+        }
+        return bank;
     }
 
     public Client registerClient(String name, int socialSecurity) {

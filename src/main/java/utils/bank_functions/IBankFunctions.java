@@ -2,6 +2,7 @@ package utils.bank_functions;
 
 import model.client.Client;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -17,9 +18,9 @@ public interface IBankFunctions {
     Function<String[], String> accountType = x -> x[2];
     Function<String[], Integer> initialDesposit = x -> Integer.parseInt(x[3]);
     BiFunction<List<Client>, Integer, Client> searchClient =
-            (l, t) ->
-                    l.stream()
-                            .filter(c -> c.getSocialSecurity() == t)
-                            .findFirst()
-                            .get();
+            (l, t) -> l
+                    .stream()
+                    .filter(c -> c.getSocialSecurity() == t)
+                    .findFirst()
+                    .get();
 }

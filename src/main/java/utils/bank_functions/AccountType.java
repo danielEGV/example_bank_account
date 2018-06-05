@@ -11,7 +11,7 @@ public class AccountType implements IAccountType {
          Observable<Client> observableCheckingAccounts = Observable.fromIterable(Main.clients);
 
          System.out.println("Savings account: ");
-         observableCheckingAccounts
+         observableSavingsAccounts
                  .filter(t -> t.getAccount().getType() == 1)
                  .forEach(System.out::println);
 

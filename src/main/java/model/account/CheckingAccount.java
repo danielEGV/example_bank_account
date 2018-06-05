@@ -22,11 +22,13 @@ public class CheckingAccount extends Account {
     @Override
     public void setIdentify(int identify) {
         this.debitCardNumber = identify;
+        setModificationDate();
     }
 
     @Override
     public void setKey(int key) {
         this.debitCardPin = key;
+        setModificationDate();
     }
 
     public int getDebitCardNumber() {

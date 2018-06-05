@@ -5,6 +5,7 @@ import model.bank.Bank;
 import model.bank.IBank;
 import model.client.Client;
 import utils.bank_functions.AccountType;
+import utils.bank_functions.ActionLog;
 import utils.bank_functions.IAccountType;
 import utils.bank_functions.IBankFunctions;
 import utils.create_id.create_account_id.ICreateAccountID;
@@ -24,7 +25,7 @@ public class Main {
         //System.out.println(IRandomID.randomID.apply(12));
         //System.out.println(ICreateAccountID.lastTwoDigit.apply("Daniel"));
 
-        IBank bank = new Bank();
+        IBank bank = Bank.getInstance();
 
         Client client1 = bank.registerClient("Daniel Esteban Guevara", 21765);
         Account account1 = bank.createSavingsAccount(20000000);
@@ -88,5 +89,8 @@ public class Main {
 
         System.out.println("----------------------------------------------------------------------------");
         new AccountType().separateByTypeOfAccount();
+
+        System.out.println("----------------------------------------------------------------------------");
+        new ActionLog().actionLog();
     }
 }

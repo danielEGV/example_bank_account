@@ -22,11 +22,13 @@ public class SavingsAccount extends Account {
     @Override
     public void setIdentify(int identify) {
         this.safetyDepositBoxID = identify;
+        setModificationDate();
     }
 
     @Override
     public void setKey(int key) {
         this.safetyDepositBoxKey = key;
+        setModificationDate();
     }
 
     public int getSafetyDepositBoxID() {

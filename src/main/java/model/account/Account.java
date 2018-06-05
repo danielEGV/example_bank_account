@@ -2,17 +2,24 @@ package model.account;
 
 import utils.create_id.create_account_id.CreateAccountID;
 
+import java.time.LocalDate;
+
 public abstract class Account {
     protected int accountID;
     protected double balance;
     protected double rate;
     protected int type;
+    protected LocalDate creationDate;
+    protected LocalDate modificationDate;
 
     public Account(double balance, int type) {
         this.balance = balance;
         this.type = type;
         loadRate();
+        setCreationDate();
     }
+
+
 
     public Account(int type) {
         this.type = type;
@@ -28,10 +35,12 @@ public abstract class Account {
 
     public void incrementBalance(double quantity) {
         this.balance += quantity;
+        setModificationDate();
     }
 
     public void decrementBalance(double quantity) {
         this.balance -= quantity;
+        setModificationDate();
     }
 
     public int getAccountID() {
@@ -40,6 +49,7 @@ public abstract class Account {
 
     public void setAccountID(int accountID) {
         this.accountID = accountID;
+        setModificationDate();
     }
 
     public double getBalance() {
@@ -64,6 +74,22 @@ public abstract class Account {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    private void setCreationDate() {
+        this.creationDate = LocalDate.now();
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    protected void setModificationDate() {
+        this.modificationDate = LocalDate.now();
+    }
+
+    public LocalDate getModificationDate() {
+        return modificationDate;
     }
 
     @Override
