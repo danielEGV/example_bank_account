@@ -1,4 +1,5 @@
 import model.account.Account;
+import model.account.CheckingAccount;
 import model.bank.Bank;
 import model.client.Client;
 import org.junit.Assert;
@@ -10,39 +11,38 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 
 @RunWith(value = Parameterized.class)
-public class DepositSavingsAccountTest {
+public class WithdrawCheckingAccountTest {
+
     Bank bank;
     Client client;
     Account account;
-    static final double balanceInit = 8000;
 
-    double depositValue;
+    static final double balanceInit = 8000;
+    double withdrawValue;
     double expected;
 
-    public DepositSavingsAccountTest(double depositValue, double expected) {
-        this.depositValue = depositValue;
+    public WithdrawCheckingAccountTest(double withdrawValue, double expected) {
+        this.withdrawValue = withdrawValue;
         this.expected = expected;
     }
 
     @Parameterized.Parameters
     public static Iterable<Object[]> getData() {
         return Arrays.asList(new Object[][]{
-                {2000, balanceInit + 2000}, {15000, balanceInit + 15000}, {0, balanceInit}
+                {8000, balanceInit - 8000}, {2000, balanceInit - 2000}, {5000, balanceInit - 5000}
         });
     }
 
     @Before
     public void before() {
         bank = Bank.getInstance();
-        client = bank.registerClient("Daniel", 12345);
-        account = bank.createSavingsAccount(balanceInit);
-        bank.associateAccountWithClient(client, account);
+        client = bank.registerClient("Daniel", 123456, bank.createCheckingAccount(balanceInit));
     }
 
     @Test
-    public void depoitTest() {
-        bank.deposit(client, depositValue);
+    public void withdrawTest() {
+        bank.withdraw(client, withdrawValue);
         double result = client.getAccount().getBalance();
-        Assert.assertEquals(result, expected, 0.02);
+        Assert.assertEquals(expected, result, 0.02);
     }
 }

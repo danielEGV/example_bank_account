@@ -19,6 +19,7 @@ public class DepositCheckingAccountTest {
     Client client;
     Account account;
 
+    static final double balanceInit = 8000;
     double depositValue;
     double depositExpected;
 
@@ -30,7 +31,7 @@ public class DepositCheckingAccountTest {
     @Parameterized.Parameters
     public static Iterable<Object[]> getData() {
         return Arrays.asList(new Object[][]{
-                {2000, 10000}, {15000, 23000}, {0, 8000}
+                {2000, balanceInit + 2000}, {15000, balanceInit + 15000}, {0, balanceInit}
         });
     }
 
@@ -38,12 +39,13 @@ public class DepositCheckingAccountTest {
     public void before() {
         bank = Bank.getInstance();
         client = bank.registerClient("Daniel", 12345);
-        account = bank.createCheckingAccount(8000);
+        account = bank.createCheckingAccount(balanceInit);
         bank.associateAccountWithClient(client, account);
     }
 
     @Test
     public void testClient() {
+
         bank.deposit(client, depositValue);
         double result = client.getAccount().getBalance();
         Assert.assertEquals(depositExpected, result, 0.2);
