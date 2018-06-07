@@ -112,7 +112,12 @@ public class Main {
         userPersistence.modifyClient(client3);
         userPersistence.allClients();
 
-        userPersistence.deleteClient(client3);
-        userPersistence.allClients();
+        //userPersistence.deleteClient(client3);
+        //userPersistence.allClients();
+
+        System.out.println("----------------------------------------------------------------------------");
+        ActionLog actionLog = new ActionLog();
+        actionLog.actionLog();
+        System.out.println(actionLog.getClients());
     }
 }

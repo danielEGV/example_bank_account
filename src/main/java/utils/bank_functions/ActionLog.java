@@ -10,10 +10,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ActionLog implements IActionLog {
+    private List<Client> clients;
+
+    public ActionLog() {
+        clients = new ArrayList<>();
+    }
 
     @Override
     public void actionLog() {
         Observable<Client> observableClient = Observable.fromIterable(Main.clients);
+        Observable<Client> testObsevableClient = Observable.fromIterable(Main.clients);
 
         System.out.println(">>>>>>> Mayor a menor <<<<<<<");
         observableClient
@@ -21,6 +27,15 @@ public class ActionLog implements IActionLog {
                 .take(5)
                 .map(c -> Arrays.asList(c.getName(), c.getAccount().getBalance()))
                 .forEach(this::creationLog);
+
+        testObsevableClient
+                .sorted((client1, client2) -> (int)(client2.getAccount().getBalance() - client1.getAccount().getBalance()))
+                .take(5)
+                .subscribe(client -> clients.add(client));
+    }
+
+    public List<Client> getClients() {
+        return clients;
     }
 
 
