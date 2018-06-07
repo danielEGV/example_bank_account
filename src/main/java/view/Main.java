@@ -4,19 +4,16 @@ import model.account.Account;
 import model.bank.Bank;
 import model.bank.IBank;
 import model.client.Client;
+import org.davidmoten.rx.jdbc.Database;
+import persistence.connection.ConnectionJDBC;
+import persistence.connection.ConnectionRxJDBC;
+import persistence.user.UserPersistence;
 import utils.bank_functions.AccountType;
 import utils.bank_functions.ActionLog;
-import utils.bank_functions.IAccountType;
 import utils.bank_functions.IBankFunctions;
-import utils.create_id.create_account_id.ICreateAccountID;
-import utils.create_id.random_id.IRandomID;
-import utils.properties.properties_size_ids.properties_size_account_id.IPropetiesSizeAccountID;
-import utils.read_csv.ReadCSV;
-import utils.read_file.ReadFileBufferedReader;
 
-import java.io.IOException;
+import java.sql.Connection;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Main {
     public  static List<Client> clients;
@@ -92,5 +89,22 @@ public class Main {
 
         System.out.println("----------------------------------------------------------------------------");
         new ActionLog().actionLog();
+
+        System.out.println("----------------------------------------------------------------------------");
+        //Connection connectionDB = ConnectionJDBC.getConnection();
+        //Database database = ConnectionRxJDBC.getConnection();
+        /*database.select("SELECT * FROM clientbank")
+                .getAs(Integer.class, String.class)
+                .blockingForEach(System.out::println);*/
+
+        Client client3 = IBankFunctions.searchClient.apply(clients, 687057316);
+        System.out.println(bank.showInfo(client3));
+
+        UserPersistence userPersistence = UserPersistence.getInstance();
+
+        userPersistence.createClient(client3);
+
+        userPersistence.allClients();
+        userPersistence.getClient(12345);
     }
 }
