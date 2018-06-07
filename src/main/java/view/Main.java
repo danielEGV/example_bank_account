@@ -102,9 +102,17 @@ public class Main {
 
         UserPersistence userPersistence = UserPersistence.getInstance();
 
-        userPersistence.createClient(client3);
+        //userPersistence.createClient(client3);
 
         userPersistence.allClients();
         userPersistence.getClient(12345);
+
+        client3.setName("Julieta Fuentes");
+
+        userPersistence.modifyClient(client3);
+        userPersistence.allClients();
+
+        userPersistence.deleteClient(client3);
+        userPersistence.allClients();
     }
 }

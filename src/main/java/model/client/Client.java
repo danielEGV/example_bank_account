@@ -1,8 +1,9 @@
 package model.client;
 
 import model.account.Account;
+import org.davidmoten.rx.jdbc.annotations.Column;
 
-public class Client {
+public class Client implements IClient {
     private String name;
     private int socialSecurity;
     private Account account;
